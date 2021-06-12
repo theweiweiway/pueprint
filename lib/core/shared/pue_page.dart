@@ -31,7 +31,8 @@ class PuePage extends StatefulWidget {
     required this.body,
     this.footerData,
     this.background,
-  });
+  }) : assert(!(appBar != null && appBarData != null) &&
+            !(footer != null && footerData != null));
 
   @override
   _PuePageState createState() => _PuePageState();

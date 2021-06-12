@@ -8,18 +8,18 @@ import 'pue_theme.dart';
 class PueProvider extends StatelessWidget {
   final Widget? child;
   final PueTheme? theme;
-  final AppBarData? appBarState;
-  final FooterData? footerState;
+  final AppBarData? appBarData;
+  final FooterData? footerData;
   final Widget Function(
-          BuildContext context, AppBarData appBarState, FooterData footerState)?
+          BuildContext context, AppBarData appBarData, FooterData footerData)?
       builder;
 
   PueProvider({
     this.child,
     this.builder,
     this.theme,
-    this.appBarState,
-    this.footerState,
+    this.appBarData,
+    this.footerData,
   }) : assert(!(child == null && builder == null));
 
   @override
@@ -27,15 +27,15 @@ class PueProvider extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (_) => theme ?? PueTheme(context: context),
       child: ChangeNotifierProvider(
-        create: (_) => AppBarData(),
+        create: (_) => appBarData ?? AppBarData(),
         child: ChangeNotifierProvider(
-          create: (_) => FooterData(),
+          create: (_) => footerData ?? FooterData(),
           child: builder != null
               ? Builder(
                   builder: (context) {
-                    final appBarState = context.watch<AppBarData>();
-                    final footerState = context.watch<FooterData>();
-                    return builder!(context, appBarState, footerState);
+                    final appBarData = context.watch<AppBarData>();
+                    final footerData = context.watch<FooterData>();
+                    return builder!(context, appBarData, footerData);
                   },
                 )
               : child,

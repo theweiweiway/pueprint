@@ -5,8 +5,6 @@ import 'footer/pue_footer_data.dart';
 import 'pue_provider.dart';
 import 'pue_theme.dart';
 
-///
-///
 /// The `header` is not included as an parameter because the `bottom`
 /// parameter of the `appBar` takes it's place. Instead, use the
 /// `header` in the `PuePage` if you want to specify a header that transitions
