@@ -1,40 +1,47 @@
 import 'package:flutter/material.dart';
+import '../../helpers/helpers_core.dart';
 
 class PueFooter extends StatelessWidget {
   /// Padding that is applied to the whole footer.
   final EdgeInsetsGeometry padding;
 
+  final double gutters;
+
   /// Top area of the footer. Good for putting things like progress bars
-  final Widget top;
+  final Widget? top;
 
   /// Main footer area. Good for putting the main footer button
   final Widget child;
 
   /// Bottom area of the footer. Good for putting things like page indicator
-  final Widget bottom;
+  final Widget? bottom;
 
   final bool floating;
 
   PueFooter({
-    this.top = const SizedBox(),
+    this.top,
     required this.child,
-    this.bottom = const SizedBox(),
+    this.bottom,
     this.padding = const EdgeInsets.all(0),
     this.floating = false,
+    this.gutters = PueConstants.defaultGutters,
   });
 
   @override
   Widget build(Object context) {
     return Padding(
-      padding: padding,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          top,
-          child,
-          bottom,
-        ],
+      padding: EdgeInsets.symmetric(horizontal: gutters),
+      child: Padding(
+        padding: padding,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            if (top != null) top!,
+            child,
+            if (bottom != null) bottom!,
+          ],
+        ),
       ),
     );
   }

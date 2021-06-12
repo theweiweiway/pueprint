@@ -1,28 +1,38 @@
 import 'package:flutter/material.dart';
 
-class PueAppBarState extends ChangeNotifier {
+class AppBarData extends ChangeNotifier {
   /// Specifying this parameter will override the whole `appBar`
   /// widget that is located in the [Pueprint].
   ///
   /// It completely replaces the [Pueprint] appBar, and does NOT render
   /// an appBar above it
-  Widget? appBar;
+  PreferredSizeWidget? appBarOverride;
 
   /// The following widgets change the parameters of the appBar
   /// that is located in the [Pueprint]
 
   /// This is the leading `onTap` parameter in the appBar that is defined
   /// in the [Pueprint]
-  Function(dynamic data)? onTapLeading;
+  Function()? onTapLeading;
   IconData? icon;
   Widget? title;
   List<Widget>? actions;
 
-  PueAppBarState(
-      {this.appBar, this.onTapLeading, this.icon, this.title, this.actions});
+  AppBarData(
+      {this.appBarOverride,
+      this.onTapLeading,
+      this.icon,
+      this.title,
+      this.actions});
 
-  void setState(PueAppBarState state) {
-    onTapLeading = state.onTapLeading ?? null;
+  void setState(AppBarData state) {
+    appBarOverride = state.appBarOverride;
+    onTapLeading = state.onTapLeading;
+    icon = state.icon;
+    title = state.title;
+    actions = state.actions;
     notifyListeners();
   }
 }
+
+class EmptyAppBar extends AppBar {}

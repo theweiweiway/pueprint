@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 
-class PueFooterState extends ChangeNotifier {
+import 'pue_footer.dart';
+
+class FooterData extends ChangeNotifier {
+  /// Specifying this parameter will override the whole `footer`
+  /// widget that is located in the [Pueprint].
+  ///
+  /// It completely replaces the [Pueprint] footer, and does NOT render
+  /// a footer above it
+  Widget? footerOverride;
+
   /// On tap of the main button in the footer
-  Function(dynamic data)? onTap;
+  void Function()? onTap;
 
   /// This is the child of the main button in the footer
   Widget? buttonChild;
@@ -16,7 +25,8 @@ class PueFooterState extends ChangeNotifier {
   /// Percent of a progress indicator
   double? percent;
 
-  PueFooterState({
+  FooterData({
+    this.footerOverride,
     this.onTap,
     this.buttonChild,
     this.activeStep,
@@ -24,7 +34,8 @@ class PueFooterState extends ChangeNotifier {
     this.percent,
   });
 
-  void setState(PueFooterState state) {
+  void setState(FooterData state) {
+    footerOverride = state.footerOverride;
     onTap = state.onTap;
     buttonChild = state.buttonChild;
     activeStep = state.activeStep;
@@ -32,4 +43,8 @@ class PueFooterState extends ChangeNotifier {
     percent = state.percent;
     notifyListeners();
   }
+}
+
+class EmptyFooter extends PueFooter {
+  EmptyFooter() : super(child: Container());
 }

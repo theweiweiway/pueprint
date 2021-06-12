@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pueprint/core/shared/pue_background.dart';
-import 'package:pueprint/helpers/helpers_core.dart';
+import '../../helpers/helpers_core.dart';
+import 'pue_background.dart';
 
 /// This widget can be used as a base for laying out your page. It is
 /// similar to `PuePage`, but doesn't modify a parent `Pueprint`. It also
@@ -24,7 +24,7 @@ class SoloPuePage extends StatelessWidget {
 
   final Widget? footer;
 
-  final PueBackground? background;
+  final Widget? background;
 
   /// Max width of this page. This is useful for desktop view, and does not
   /// affect the `appBar`
@@ -59,25 +59,7 @@ class SoloPuePage extends StatelessWidget {
         //       child: Padding(
         //         padding:
         //             bodyPadding ?? context.read<PueBaseTheme>().bodyPadding,
-        //         child: fadeBodyTop || fadeBodyBottom
-        //             ? ShaderMask(
-        //                 shaderCallback: (rect) {
-        //                   return LinearGradient(
-        //                     begin: Alignment.topCenter,
-        //                     end: Alignment.bottomCenter,
-        //                     colors: [
-        //                       if (fadeBodyTop) Colors.transparent,
-        //                       for (var i = 0; i < 20; i++) Colors.black,
-        //                       if (fadeBodyBottom) Colors.transparent
-        //                     ],
-        //                   ).createShader(
-        //                     Rect.fromLTRB(0, 0, rect.width, rect.height),
-        //                   );
-        //                 },
-        //                 blendMode: BlendMode.dstIn,
-        //                 child: body,
-        //               )
-        //             : body,
+        //         child: body,
         //       ),
         //     ),
         //     if (footer != null && !floatFooter)

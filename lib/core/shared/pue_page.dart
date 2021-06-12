@@ -1,26 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:pueprint/core/app_bar/app_bar_export.dart';
-import 'package:pueprint/core/footer/footer_export.dart';
-import 'package:pueprint/core/header/pue_header_state.dart';
-
-import 'pue_background.dart';
+import '../app_bar/export.dart';
+import '../footer/export.dart';
 
 class PuePage extends StatefulWidget {
+  /// Specifying this parameter will completely override the `appBar` defined in the [Pueprint]
+  final PreferredSizeWidget? appBar;
   final Widget? header;
   final Widget body;
-  final PueBackground? background;
 
-  final PueAppBarState? appBarState;
-  final PueHeaderState? headerState;
-  final PueFooterState? footerState;
+  /// Specifying this parameter will completely override the `footer` defined in the [Pueprint]
+  final PueFooter? footer;
+
+  /// This is the background of the header and body. This does not
+  /// override the [Pueprint] background, so by setting this, the
+  /// app bar's background will **not** change
+  ///
+  /// If you would like to change to background of the whole page,
+  /// pass a `background` argument into `theme`
+  final Widget? background;
+
+  final AppBarData? appBarData;
+  final FooterData? footerData;
 
   PuePage({
-    this.appBarState,
+    this.appBar,
+    this.footer,
+    this.appBarData,
     this.header,
-    this.headerState,
     required this.body,
-    this.footerState,
+    this.footerData,
     this.background,
   });
 
@@ -32,15 +41,12 @@ class _PuePageState extends State<PuePage> {
   @override
   void initState() {
     Future.delayed(Duration.zero, () {
-      context
-          .read<PueFooterState>()
-          .setState(widget.footerState ?? PueFooterState());
-      context
-          .read<PueAppBarState>()
-          .setState(widget.appBarState ?? PueAppBarState());
-      context
-          .read<PueHeaderState>()
-          .setState(widget.headerState ?? PueHeaderState());
+      context.read<FooterData>().setState(widget.footer != null
+          ? FooterData(footerOverride: widget.footer)
+          : (widget.footerData ?? FooterData()));
+      context.read<AppBarData>().setState(widget.appBar != null
+          ? AppBarData(appBarOverride: widget.appBar)
+          : (widget.appBarData ?? AppBarData()));
     });
     super.initState();
   }
@@ -50,45 +56,16 @@ class _PuePageState extends State<PuePage> {
     return Stack(
       children: [
         if (widget.background != null) widget.background!,
-        // Column(
-        //   mainAxisAlignment: MainAxisAlignment.start,
-        //   crossAxisAlignment: CrossAxisAlignment.start,
-        //   children: [
-        //     if (appBar != null)
-        //       // add empty space so that the body starts after the appbar
-        //       SizedBox(height: appBar!.preferredSize.height),
-        //     if (header != null) header!,
-        //     Expanded(
-        //       child: Padding(
-        //         padding:
-        //             bodyPadding ?? context.read<PueBaseTheme>().bodyPadding,
-        //         child: fadeBodyTop || fadeBodyBottom
-        //             ? ShaderMask(
-        //                 shaderCallback: (rect) {
-        //                   return LinearGradient(
-        //                     begin: Alignment.topCenter,
-        //                     end: Alignment.bottomCenter,
-        //                     colors: [
-        //                       if (fadeBodyTop) Colors.transparent,
-        //                       for (var i = 0; i < 20; i++) Colors.black,
-        //                       if (fadeBodyBottom) Colors.transparent
-        //                     ],
-        //                   ).createShader(
-        //                     Rect.fromLTRB(0, 0, rect.width, rect.height),
-        //                   );
-        //                 },
-        //                 blendMode: BlendMode.dstIn,
-        //                 child: body,
-        //               )
-        //             : body,
-        //       ),
-        //     ),
-        //     if (footer != null && !floatFooter)
-        //       // add empty space so that the body starts before the footer
-        //       SizedBox(height: footer!.preferredSize.height),
-        //   ],
-        // ),
-        // if (footer != null) Positioned(child: footer!, bottom: 0),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (widget.header != null) widget.header!,
+            Expanded(
+              child: widget.body,
+            ),
+          ],
+        ),
       ],
     );
   }
