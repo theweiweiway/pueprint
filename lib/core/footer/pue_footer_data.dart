@@ -45,6 +45,8 @@ class FooterData extends ChangeNotifier {
   }
 }
 
+/// Pass this into the `footer` parameter of [PuePage] to completely remove
+/// the footer for that specific page.
 class EmptyFooter extends PueFooter {
   EmptyFooter() : super(child: Container());
 }

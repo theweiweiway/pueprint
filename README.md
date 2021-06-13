@@ -2,7 +2,7 @@
 
 ## What is it?
 
-A Flutter package to make flow building and page layouts easy.
+A Flutter package to make flows and page layouts easy to style.
 
 _Why Pueprint? Because it stands for Page + Blueprint, which combines to Pueprint! 💩💩_
 
@@ -19,6 +19,10 @@ _Why Pueprint? Because it stands for Page + Blueprint, which combines to Pueprin
     - [FooterData](#footerdata)
   - [Single pages](#single-pages)
     - [SoloPuePage](#solopuepage)
+  - [Widgets](#widgets)
+    - [PueHeader](#pueheader)
+    - [PueBody](#puebody)
+    - [PueFooter](#puefooter)
 - [Integration with routing libraries](#integration-with-routing-libraries)
   - [AutoRoute](#autoroute)
   - [VRouter](#vrouter)
@@ -47,6 +51,21 @@ In addition to flows, this package provides a simple page blueprint that allows 
 
 # Core concepts
 
+This package revolves around the idea that a page can be divded into 4 distinct parts:
+
+- app bar
+- header
+- body
+- footer
+
 # Usage
 
 # Integration with Routing Libraries
+
+A flow UI and UX package wouldn't be complete without understanding how it can be integrated with navigation, since these features go hand-in-hand. Here are some examples of how to use this package in conjunction with some popular routing libraries.
+
+## AutoRoute
+
+## VRouter
+
+## Routemaster

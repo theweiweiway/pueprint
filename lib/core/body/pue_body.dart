@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import '../pue_theme.dart';
 
+/// This widget is intended to be used in the `body` parameter of the
+/// [PuePaqe] or [SoloPuePage] widgets. It provides some extra functionality as
+/// opposed to just putting your own widget in the `body` section of the [PuePage]
+/// (which is completely possible if you prefer). You can easily turn the body
+/// into a listview, and fade the top and bottom of the body out. It also has `gutters`
+/// so that the header, body and footer can all have the same horizontal padding.
 class PueBody extends StatelessWidget {
   final Widget child;
 
@@ -10,8 +16,19 @@ class PueBody extends StatelessWidget {
   /// that there are no overflow errors.
   final bool listView;
 
+  /// If this is true, the top of the `body` will fade in and out. This is useful
+  /// if you have a listview and you dont want to abrupty chop off the top of the
+  /// listview when scrolling
   final bool fadeTop;
+
+  /// If this is true, the bottom of the `body` will fade in and out. This is useful
+  /// if you have a listview and you dont want to abrupty chop off the bottom of the
+  /// listview when scrolling
   final bool fadeBottom;
+
+  /// The gutters (or horizontal padding) that exists on the left and right side
+  /// of the footer. By default, it will use the `gutters` that are defined in the
+  /// parent [Pueprint] widget
   final double? gutters;
 
   PueBody({
