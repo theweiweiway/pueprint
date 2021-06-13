@@ -1,8 +1,8 @@
 # 💩 Pueprint 💩
 
----
+## What is it?
 
-A Flutter package to create consistent styling for **flows** and generic pages with minimal code.
+A Flutter package to make flow building and page layouts easy.
 
 _Why Pueprint? Because it stands for Page + Blueprint, which combines to Pueprint! 💩💩_
 
@@ -10,6 +10,15 @@ _Why Pueprint? Because it stands for Page + Blueprint, which combines to Pueprin
 
 - [Motivation](#motivation)
 - [Getting started](#getting-started)
+- [Core concepts](#core-concepts)
+- [Usage](#usage)
+  - [Flows](#flows)
+    - [Pueprint](#pueprint)
+    - [PuePage](#puepage)
+    - [AppBarData](#appbardata)
+    - [FooterData](#footerdata)
+  - [Single pages](#single-pages)
+    - [SoloPuePage](#solopuepage)
 - [Integration with routing libraries](#integration-with-routing-libraries)
   - [AutoRoute](#autoroute)
   - [VRouter](#vrouter)
@@ -35,5 +44,9 @@ In addition to flows, this package provides a simple page blueprint that allows 
 # Getting Started
 
 1.
+
+# Core concepts
+
+# Usage
 
 # Integration with Routing Libraries

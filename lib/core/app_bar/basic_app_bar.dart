@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+/// This is a basic `appBar` that eliminates any default [AppBar] styling, and has
+/// a transparent background and shadow colour, black icon colour and 0 elevation.
+///
+/// Besides this, everything else is identical to the Flutter default [AppBar] component
 class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? leading;
   final bool automaticallyImplyLeading;

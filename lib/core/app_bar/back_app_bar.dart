@@ -3,14 +3,29 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+/// This is a basic `appBar` that eliminates any default [AppBar] styling, and has
+/// a transparent background and shadow colour, black icon colour and 0 elevation.
+///
+/// Besides this, everything else is identical to the Flutter default [AppBar] component
+///
+///
 class BackAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// Override the default `onTap` behaviour. If this is `null`, it will
   /// default to `Navigator.of(context).pop()`
   final void Function()? onTap;
+
+  /// If true, the leading icon button will be in a disabled state. This is needed
+  /// because the `onTap` parameter defaults to the default `onBack` behaviour specified
+  /// in the [Pueprint] if `null`
   final bool disabled;
+
+  /// If we want to override the back button icon, we can do so here
   final IconData? icon;
-  final bool automaticallyImplyLeading;
+
+  /// If true, this widget uses `Icons.arrow_back_ios_new` on iOS or macOS, and
+  /// `Icons.arrow_back` on everything else. Note that specifying `icon` will override this.
   final bool adaptiveBackButton;
+  final bool automaticallyImplyLeading;
   final Widget? title;
   final List<Widget>? actions;
   final Widget? flexibleSpace;
