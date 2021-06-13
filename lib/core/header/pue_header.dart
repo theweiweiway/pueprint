@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../helpers/helpers_core.dart';
+import '../../helpers/export.dart';
 import '../pue_theme.dart';
 
 /// Default simple header that renders a header and subheader

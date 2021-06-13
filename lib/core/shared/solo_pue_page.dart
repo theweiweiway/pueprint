@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../helpers/helpers_core.dart';
+import '../../helpers/export.dart';
 import 'pue_background.dart';
 
 /// This widget can be used as a base for laying out your page. It is
