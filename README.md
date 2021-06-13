@@ -1,14 +1,34 @@
-# pueprint
+# 💩 Pueprint 💩
 
-A new Flutter package project.
+---
 
-## Getting Started
+A Flutter package to create consistent styling for **flows** with minimal code.
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+Some highlights of this package:
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+- Declaratively define your app bars, headers and footers to to pages in flows
+- Create flows with minimal boilerplate and repeated code
+- Seamless integration with routing packages such as AutoRoute, VRouter and Routemaster
+- and more..
+
+_Why Pueprint? Because it stands for Page + Blueprint, which combines to Pueprint! 💩💩_
+
+# Table of Contents
+
+- [Motivation](#motivation)
+- [Getting started](#getting-started)
+- [Integration with routing libraries](#integration-with-routing-libraries)
+  - [AutoRoute](#autoroute)
+  - [VRouter](#vrouter)
+
+# Motivation
+
+Flows usually consist of several pages that have an **AppBar**, as well as some sort of **Footer** to allow the user to proceed to the next page.
+
+In addition to flows, there's no easy way to add and customize footers. Even with the `Scaffold` component, there are limitations on how you can customize the footer.
+
+# Getting Started
+
+1.
+
+# Integration with Routing Libraries
