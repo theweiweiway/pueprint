@@ -33,6 +33,10 @@ class PueTheme extends ChangeNotifier {
   }
 
   void setState(PueTheme state) {
+    gutters = state.gutters;
+    maxWidth = state.maxWidth;
+    headerTextStyle = state.headerTextStyle;
+    headerSubtextStyle = state.headerSubtextStyle;
     notifyListeners();
   }
 }

@@ -2,7 +2,7 @@
 
 ## What is it?
 
-A Flutter package to make flows and page layouts easy to style.
+A Flutter package to make flows and pages easy to style.
 
 _Why Pueprint? Because it stands for Page + Blueprint, which combines to Pueprint! 💩💩_
 
@@ -65,6 +65,72 @@ This package revolves around the idea that a page can be divded into 4 distinct 
 A flow UI and UX package wouldn't be complete without understanding how it can be integrated with navigation, since these features go hand-in-hand. Here are some examples of how to use this package in conjunction with some popular routing libraries.
 
 ## AutoRoute
+
+With **AutoRoute**, you will need to use a wrapper page
+
+1. Create your routing setup
+
+```dart
+@MaterialAutoRouter(
+    replaceInRouteName: 'Page,Route',
+    routes: <AutoRoute>[
+        // ...your other routes
+        AutoRoute(
+            path: "/flow",
+            page: FlowWrapperPage,
+            children: [
+                AutoRoute(path: '1', page: Flow1Page),
+                AutoRoute(path: '2', page: Flow2Page),
+                AutoRoute(path: '3', page: Flow3Page),
+            ],
+        ),
+    ],
+)
+class $AppRouter {}
+```
+
+2. Define your wrapper page. In this case, it is `FlowWrapperPage`
+
+```dart
+class BookWrapperPage extends StatelessWidget {
+  const BookWrapperPage({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Pueprint(
+      appBarBuilder: (context, state) {
+        return Container(),
+      },
+      footerBuilder: (context, state) {
+        return Container(),
+      },
+      body: AutoRouter(),
+    );
+  }
+}
+```
+
+3. Now in your flow pages (in this example, `Flow1Page`, `Flow2Page` and `Flow3Page`), use `PuePage` like so!
+
+```dart
+class Flow1Page extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return PuePage(
+      appBarData: AppBarData(
+        onTapLeading: () => context.router.pop(),
+        icon: Icons.back_arrow_ios,
+      ),
+      footerData: FooterData(
+        onTap: () => handleGoToNextPage(),
+        buttonChild: Text('Submit'),
+      ),
+      body: Container(),
+    );
+  }
+}
+```
 
 ## VRouter
 

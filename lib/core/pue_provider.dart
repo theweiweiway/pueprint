@@ -11,8 +11,10 @@ class PueProvider extends StatelessWidget {
   final AppBarData? appBarData;
   final FooterData? footerData;
   final Widget Function(
-          BuildContext context, AppBarData appBarData, FooterData footerData)?
-      builder;
+    BuildContext context,
+    AppBarData appBarData,
+    FooterData footerData,
+  )? builder;
 
   PueProvider({
     this.child,
