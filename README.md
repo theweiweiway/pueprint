@@ -68,32 +68,11 @@ A flow UI and UX package wouldn't be complete without understanding how it can b
 
 With **AutoRoute**, you will need to use a wrapper page
 
-1. Create your routing setup
+1. Define your wrapper page. In this case, we are calling it `FlowWrapperPage`
 
 ```dart
-@MaterialAutoRouter(
-    replaceInRouteName: 'Page,Route',
-    routes: <AutoRoute>[
-        // ...your other routes
-        AutoRoute(
-            path: "/flow",
-            page: FlowWrapperPage,
-            children: [
-                AutoRoute(path: '1', page: Flow1Page),
-                AutoRoute(path: '2', page: Flow2Page),
-                AutoRoute(path: '3', page: Flow3Page),
-            ],
-        ),
-    ],
-)
-class $AppRouter {}
-```
-
-2. Define your wrapper page. In this case, it is `FlowWrapperPage`
-
-```dart
-class BookWrapperPage extends StatelessWidget {
-  const BookWrapperPage({Key key}) : super(key: key);
+class FlowWrapperPage extends StatelessWidget {
+  const FlowWrapperPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -108,6 +87,27 @@ class BookWrapperPage extends StatelessWidget {
     );
   }
 }
+```
+
+2. Plug your `FlowWrapperPage` into your routing setup like so
+
+```dart
+@MaterialAutoRouter(
+    replaceInRouteName: 'Page,Route',
+    routes: <AutoRoute>[
+        // ...your other routes
+        AutoRoute(
+            path: "/flow",
+            page: FlowWrapperPage, // plug your wrapper page in right here!
+            children: [
+                AutoRoute(path: '1', page: Flow1Page),
+                AutoRoute(path: '2', page: Flow2Page),
+                AutoRoute(path: '3', page: Flow3Page),
+            ],
+        ),
+    ],
+)
+class $AppRouter {}
 ```
 
 3. Now in your flow pages (in this example, `Flow1Page`, `Flow2Page` and `Flow3Page`), use `PuePage` like so!
