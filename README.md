@@ -2,9 +2,9 @@
 
 ## What is it?
 
-A Flutter package to make flows and pages easy to style.
+A Flutter package to make flows and pages much easier to lay out and style.
 
-_Why Pueprint? Because it stands for Page + Blueprint, which combines to Pueprint! 💩💩_
+_Why Pueprint? Because it stands for Page + Blueprint, which combines to 💩Pueprint💩!!!💩💩💩_
 
 # Table of Contents
 
@@ -29,7 +29,7 @@ _Why Pueprint? Because it stands for Page + Blueprint, which combines to Pueprin
 
 # Motivation
 
-Flows usually consist of several pages that have an **AppBar** as well as some sort of **Footer** which allows the user to proceed to through the flow. However, these **AppBar** and **Footer** widgets are commonly overlayed _on top_ of each page and are located in parent component, which makes it tedious to tweak these widgets.
+Flows usually consist of several pages that have an **AppBar** as well as some sort of **Footer** which allows the user to proceed to through the flow. However, these **AppBar** and **Footer** widgets are commonly overlayed _on top_ of each page and are located in parent component, which makes it tedious to tweak these widgets without a bunch of boilerplate and lifting state up.
 
 This package makes it easy to:
 
