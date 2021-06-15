@@ -2,26 +2,33 @@ import 'package:flutter/material.dart';
 import '../helpers/export.dart';
 import 'shared/pue_background.dart';
 
+/// The [PueTheme] contains all of the information for descendant [Pue] widgets.
+/// These fields will be used to help descendant [PueHeader]s, [PueBody]s and [PueFooter]s
+/// have consistent gutters and styling
 class PueTheme extends ChangeNotifier {
-  /// Specifying this parameter will override the whole `appBar`
-  /// widget that is located in the [Pueprint].
-  ///
-  /// It completely replaces the [Pueprint] appBar, and does NOT render
-  /// an appBar above it
-
   BuildContext context;
+
+  /// This is the horizontal padding of descendant [PueHeader]s, [PueBody]s and [PueFooter]s.
+  /// This helps to ensure
   double gutters;
-  double maxWidth;
+
+  /// TBD: This will cap the max width of the [PueHeader]s, [PueBody]s and [PueFooter]s
+  /// for web and desktop view
+  // double maxWidth;
+
+  /// The text style for the main header text, as well as subtext. This is used
+  /// in the [PueHeader]
   TextStyle? headerTextStyle;
   TextStyle? headerSubtextStyle;
 
-  /// This controls the current background of the [Pueprint]
+  /// This controls the background of the [Pueprint] or [SoloPuePage] if using
+  /// outside of a flow.
   Widget? background;
 
   PueTheme({
     required this.context,
     this.gutters = PueConstants.defaultGutters,
-    this.maxWidth = PueConstants.defaultMaxWidth,
+    // this.maxWidth = PueConstants.defaultMaxWidth,
     this.headerTextStyle,
     this.headerSubtextStyle,
     this.background,
@@ -34,7 +41,7 @@ class PueTheme extends ChangeNotifier {
 
   void setState(PueTheme state) {
     gutters = state.gutters;
-    maxWidth = state.maxWidth;
+    // maxWidth = state.maxWidth;
     headerTextStyle = state.headerTextStyle;
     headerSubtextStyle = state.headerSubtextStyle;
     notifyListeners();
