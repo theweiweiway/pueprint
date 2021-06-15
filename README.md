@@ -126,7 +126,7 @@ class Flow1Page extends StatelessWidget {
         onTap: () => handleGoToNextPage(),
         buttonChild: Text('Submit'),
       ),
-      body: Container(),
+      body: MyPageBody(),
     );
   }
 }

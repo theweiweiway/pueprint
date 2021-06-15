@@ -5,28 +5,80 @@ import 'footer/pue_footer_data.dart';
 import 'pue_provider.dart';
 import 'pue_theme.dart';
 
-/// The `header` is not included as an parameter because the `bottom`
-/// parameter of the `appBar` takes it's place. Instead, use the
-/// `header` in the `PuePage` if you want to specify a header that transitions
-/// from page to page just as the body does
+/// This is the parent widget that descendant [PuePage]s will modify. It renders
+/// the `appBar` and `footer`, so that on page changes, these elements will not
+/// transition.
+///
+/// To add an `appBar` of `footer`, use the `appBarBuilder` and `footerBuilder` args.
+/// For example:
+/// ```dart
+/// footerBuilder: (context, data) {
+///   return PueFooter(
+///     child: Container(
+///       width: double.infinity,
+///       child: ElevatedButton(
+///         child: data.buttonChild,
+///          onPressed: data.onTap,
+///       ),
+///     ),
+///   );
+/// }
+/// ```
+///
+/// By using a builder, we are able to change the `child` and `onPressed` fields
+/// declaratively, directly from our descendant [PuePage]s
+///
+/// To set the background of this [Pueprint], see the `theme` parameter and
+/// corresponding `PueTheme` class.
+///
+/// It also allows you to pass in a `theme` so that all descendant [PuePage]s and
+/// other [Pue] widgets can inherit this theme. For example, the `gutters` attribute
+/// ensures that [PueHeader]s, [PueBody]s and [PueFooter]s all have the same amount
+/// of horizontal padding so they line up nicely.
 class Pueprint extends StatelessWidget {
+  /// The main body for all children to be rendered in. Similar to a Scaffold `body`
   final Widget body;
 
+  /// Defines the theme for all descendant [Pue] widgets, for example
+  /// `gutters` (horizontalPadding) and the current `background`
   final PueTheme? theme;
 
-  /// Setting this to true will make this [Pueprint] inherit
-  /// it's [PueTheme] from a parent [Pueprint] OR [PueProvider]
-  final bool inherit;
-
+  /// Use this to build the footer of all descendant pages. Example usage:
+  ///
+  /// ```dart
+  /// footerBuilder: (context, data) {
+  ///   return AppBar(
+  ///     leading: IconButton(
+  ///       onPressed: data.onTapLeading,
+  ///       icon: Icon(data.icon),
+  ///     ),
+  ///   );
+  /// }
+  /// ```
   final PreferredSizeWidget Function(BuildContext context, AppBarData state)?
       appBarBuilder;
+
+  /// Use this to build the footer of all descendant pages. Example usage:
+  ///
+  /// ```dart
+  /// footerBuilder: (context, data) {
+  ///   return PueFooter(
+  ///     child: Container(
+  ///       width: double.infinity,
+  ///       child: ElevatedButton(
+  ///         child: data.buttonChild,
+  ///          onPressed: data.onTap,
+  ///       ),
+  ///     ),
+  ///   );
+  /// }
+  /// ```
   final PueFooter Function(BuildContext context, FooterData state)?
       footerBuilder;
 
   Pueprint({
     required this.body,
     this.theme,
-    this.inherit = false,
     this.appBarBuilder,
     this.footerBuilder,
   });

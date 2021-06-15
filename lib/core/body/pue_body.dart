@@ -28,7 +28,7 @@ class PueBody extends StatelessWidget {
 
   /// The gutters (or horizontal padding) that exists on the left and right side
   /// of the footer. By default, it will use the `gutters` that are defined in the
-  /// parent [Pueprint] widget
+  /// parent [Pueprint] widget or [PueProvider]
   final double? gutters;
 
   PueBody({

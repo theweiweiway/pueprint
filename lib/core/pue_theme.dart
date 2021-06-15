@@ -15,7 +15,7 @@ class PueTheme extends ChangeNotifier {
   TextStyle? headerTextStyle;
   TextStyle? headerSubtextStyle;
 
-  /// This is the default background of any descendant [PuePage]
+  /// This controls the current background of the [Pueprint]
   Widget? background;
 
   PueTheme({
