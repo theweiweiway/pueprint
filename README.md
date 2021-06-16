@@ -11,18 +11,6 @@ _Why Pueprint? Because it stands for Page + Blueprint, which combines to 💩Pue
 - [Motivation](#motivation)
 - [Getting started](#getting-started)
 - [Core concepts](#core-concepts)
-- [Usage](#usage)
-  - [Flows](#flows)
-    - [Pueprint](#pueprint)
-    - [PuePage](#puepage)
-    - [AppBarData](#appbardata)
-    - [FooterData](#footerdata)
-  - [Single pages](#single-pages)
-    - [SoloPuePage](#solopuepage)
-  - [Widgets](#widgets)
-    - [PueHeader](#pueheader)
-    - [PueBody](#puebody)
-    - [PueFooter](#puefooter)
 - [Integration with routing libraries](#integration-with-routing-libraries)
   - [AutoRoute](#autoroute)
   - [VRouter](#vrouter)
@@ -74,8 +62,9 @@ In addition to flows, this package provides a simple page blueprint that allows 
           )
         );
       },
-      body: DescendantPages(), // See below to see how to integrate your
-      // descendant pages with popular routing libraries like AutoRoute and VRouter
+      body: DescendantPages(), // See the very bottom of this readme for examples
+      // on integrating descendant pages with popular routing libraries such as
+      // AutoRoute and VRouter
     );
   }
 ```
@@ -100,15 +89,20 @@ In addition to flows, this package provides a simple page blueprint that allows 
   }
 ```
 
+Everytime you move to a new page in the flow, call the `PuePage` widget to update your app bar and footer!
+
 ## Outside of Flows
 
-If you would like to use the the layout capabilities of this library, first place a [PueProvider] at the top of your widget tree.
+If you would like to use the the layout capabilities of this library, first place a `PueProvider` at the top of your widget tree.
 
 ```dart
-  PueProvider(child: DescendantWidgets())
+  PueProvider(
+    child: DescendantWidgets(),
+    theme: PueTheme(), // if you want to customize the theme of your Pue widgets
+  );
 ```
 
-Now, use [SoloPuePage] like so:
+Now, use `SoloPuePage` like so:
 
 ```dart
 SoloPuePage(
@@ -136,8 +130,6 @@ This package revolves around the idea that a page can be divded into 4 distinct 
 - header
 - body
 - footer
-
-# Usage
 
 # Integration with Routing Libraries
 
