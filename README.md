@@ -126,6 +126,8 @@ SoloPuePage(
 
 This package revolves around the idea that a page can be divded into 4 distinct parts:
 
+<img src="./assets/core_concepts.png" />
+
 - app bar
 - header
 - body
