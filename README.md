@@ -1,10 +1,10 @@
 # 💩 Pueprint 💩
 
-## What is it?
+### What am I?
 
 A Flutter package to make flows and pages much easier to lay out and style.
 
-_Why Pueprint? Because it stands for Page + Blueprint, which combines to 💩Pueprint💩!!!💩💩💩_
+_Why Pueprint? Because it stands for Page + Blueprint, which combines to 💩Pueprint💩!_
 
 # Table of Contents
 
@@ -47,7 +47,9 @@ In addition to flows, this package provides a simple page blueprint that allows 
 
 # Getting Started
 
-1.
+## For Flows
+
+## Outside of Flows
 
 # Core concepts
 
@@ -76,10 +78,18 @@ class FlowWrapperPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Pueprint(
       appBarBuilder: (context, state) {
-        return Container(),
+        return AppBar(
+          leading: IconButton(
+            icon: Icon(state.icon),
+            onPressed: state.onTapLeading,
+          )
+        );
       },
       footerBuilder: (context, state) {
-        return Container(),
+        return ElevatedButton(
+          child: state.buttonChild,
+          onPressed: state.onTap,
+        );
       },
       body: AutoRouter(),
     );
@@ -144,10 +154,18 @@ class FlowWrapperPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Pueprint(
       appBarBuilder: (context, state) {
-        return Container(),
+        return AppBar(
+          leading: IconButton(
+            icon: Icon(state.icon),
+            onPressed: state.onTapLeading,
+          )
+        );
       },
       footerBuilder: (context, state) {
-        return Container(),
+        return ElevatedButton(
+          child: state.buttonChild,
+          onPressed: state.onTap,
+        );
       },
       body: child,
     );
