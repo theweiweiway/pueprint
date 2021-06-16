@@ -4,7 +4,8 @@ import '../../helpers/export.dart';
 import '../pue_theme.dart';
 
 /// Default simple header that renders a header and subheader
-/// string.
+/// string. Also allows you to completely shove your own title widget in, as
+/// well as a subtitle widget that exists under the title widget.
 class PueHeader extends StatelessWidget {
   final double? gutters;
   final String? text;
