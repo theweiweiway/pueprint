@@ -11,6 +11,7 @@ _Why Pueprint? Because it stands for Page + Blueprint, which combines to 💩Pue
 - [Motivation](#motivation)
 - [Getting started](#getting-started)
 - [Core concepts](#core-concepts)
+  - [Widgets](#widgets)
 - [Integration with routing libraries](#integration-with-routing-libraries)
   - [AutoRoute](#autoroute)
   - [VRouter](#vrouter)
@@ -35,7 +36,22 @@ In addition to flows, this package provides a simple page blueprint that allows 
 
 # Getting Started
 
-## For Flows
+Install this package in your `pubspec.yaml` file.
+
+```yaml
+dependencies:
+  pueprint: [latest-version]
+```
+
+and import with
+
+```dart
+import 'package:pueprint/pueprint.dart';
+```
+
+## Using this package
+
+### For Flows
 
 1. Define your parent `Pueprint` widget for your descendant flow pages. Think of the `Pueprint` as a scaffold for your child pages.
 
@@ -91,7 +107,7 @@ In addition to flows, this package provides a simple page blueprint that allows 
 
 Everytime you move to a new page in the flow, call the `PuePage` widget to update your app bar and footer!
 
-## Outside of Flows
+### Outside of Flows
 
 If you would like to use the the layout capabilities of this library, first place a `PueProvider` at the top of your widget tree.
 
@@ -128,18 +144,21 @@ This package revolves around the idea that a page can be divded into 4 distinct 
 
 <img src="./assets/core_concepts.png" />
 
-- app bar
-- header
-- body
-- footer
+This package uses these 4 distinct elements to draw a page.
 
-The appbar
+## Widgets
 
 ### Pueprint
 
+The `Pueprint` widget is used as the wrapper for all pages in a flow. It is responsible for actually rendering the **app bar** and **footer** in a flow.
+
 ### PuePage
 
+The `PuePage` widget is used in all of the descendant flow pages of a parent `Pueprint`. You can declaratively define attributes of the **app bar** and **footer** here, and it will automatically update the corresponding fields of the **app bar** and **footer** which is being rendered in the parent `Pueprint`.
+
 ### SoloPuePage
+
+For pages that are not a part of flows, but you still want to access the layout capabilities in this package. You can set all 4 core parts of a page in this widget.
 
 # Integration with Routing Libraries
 
