@@ -66,8 +66,6 @@ A flow UI and UX package wouldn't be complete without understanding how it can b
 
 ## AutoRoute
 
-With **AutoRoute**, you will need to use a wrapper page
-
 1. Define your wrapper page. In this case, we are calling it `FlowWrapperPage`
 
 ```dart
@@ -110,7 +108,7 @@ class FlowWrapperPage extends StatelessWidget {
 class $AppRouter {}
 ```
 
-3. Now in your flow pages (in this example, `Flow1Page`, `Flow2Page` and `Flow3Page`), use `PuePage` like so!
+3. Now in your flow pages use `PuePage` like so!
 
 ```dart
 class Flow1Page extends StatelessWidget {
@@ -134,4 +132,61 @@ class Flow1Page extends StatelessWidget {
 
 ## VRouter
 
-## Routemaster
+1. Define your wrapper page. In this case, we are calling it `FlowWrapperPage`
+
+```dart
+class FlowWrapperPage extends StatelessWidget {
+  final Widget child;
+
+  const FlowWrapperPage({Key key, required this.child}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Pueprint(
+      appBarBuilder: (context, state) {
+        return Container(),
+      },
+      footerBuilder: (context, state) {
+        return Container(),
+      },
+      body: child,
+    );
+  }
+}
+```
+
+2. Plug your `FlowWrapperPage` into your routing setup like so
+
+```dart
+VNester(
+ path: '/flow',
+ widgetBuilder: (child) => FlowWrapperPage(body: child),
+ nestedRoutes: [
+    VWidget(path: '1', widget: Flow1Page()),
+    VWidget(path: '2', widget: Flow2Page()),
+    VWidget(path: '3', widget: Flow3Page()),
+ ],
+)
+```
+
+3. Now in your flow pages use `PuePage` like so!
+
+```dart
+class Flow1Page extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return PuePage(
+      appBarData: AppBarData(
+        onTapLeading: () => context.router.pop(),
+        icon: Icons.back_arrow_ios,
+      ),
+      footerData: FooterData(
+        onTap: () => handleGoToNextPage(),
+        buttonChild: Text('Submit'),
+      ),
+      body: MyPageBody(),
+    );
+  }
+}
+```
