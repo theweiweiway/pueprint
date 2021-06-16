@@ -31,7 +31,7 @@ This package makes it easy to:
 
 All with minimal boilerplate and code.
 
-In addition to flows, this package provides a simple page blueprint that allows you to easily add **AppBar**s, **Footers**s and **Header**s to pages.
+In addition to flows, this package provides a simple page blueprint that allows you to easily add **AppBar**s, **Footer**s and **Header**s to pages.
 
 # Getting Started
 
@@ -130,6 +130,14 @@ This package revolves around the idea that a page can be divded into 4 distinct 
 - header
 - body
 - footer
+
+The appbar
+
+### Pueprint
+
+### PuePage
+
+### SoloPuePage
 
 # Integration with Routing Libraries
 
@@ -277,3 +285,7 @@ class Flow1Page extends StatelessWidget {
   }
 }
 ```
+
+---
+
+Comments, feedback and questions are much appreciated. Just drop an issue or anything else you might want to drop in the github repo! 💩💩
