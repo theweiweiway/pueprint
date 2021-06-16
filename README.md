@@ -49,6 +49,49 @@ In addition to flows, this package provides a simple page blueprint that allows 
 
 ## For Flows
 
+1. Define your parent `Pueprint` widget for your descendant flow pages
+
+```dart
+  Widget build(BuildContext context) {
+    return Pueprint(
+      appBarBuilder: (context, state) {
+        return AppBar(
+          leading: IconButton(
+            icon: Icon(state.icon),
+            onPressed: state.onTapLeading,
+          )
+        );
+      },
+      footerBuilder: (context, state) {
+        return ElevatedButton(
+          child: state.buttonChild,
+          onPressed: state.onTap,
+        );
+      },
+      body: AutoRouter(),
+    );
+  }
+```
+
+2. Now in your flow pages, use `PuePage` to easily change your appBar and footer behaviour
+
+```dart
+  @override
+  Widget build(BuildContext context) {
+    return PuePage(
+      appBarData: AppBarData(
+        onTapLeading: () => context.router.pop(),
+        icon: Icons.back_arrow_ios,
+      ),
+      footerData: FooterData(
+        onTap: () => handleGoToNextPage(),
+        buttonChild: Text('Submit'),
+      ),
+      body: MyPageBody(),
+    );
+  }
+```
+
 ## Outside of Flows
 
 # Core concepts
