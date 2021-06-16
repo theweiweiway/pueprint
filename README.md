@@ -49,7 +49,7 @@ In addition to flows, this package provides a simple page blueprint that allows 
 
 ## For Flows
 
-1. Define your parent `Pueprint` widget for your descendant flow pages
+1. Define your parent `Pueprint` widget for your descendant flow pages. Think of the `Pueprint` as a scaffold for your child pages.
 
 ```dart
   Widget build(BuildContext context) {
@@ -63,12 +63,19 @@ In addition to flows, this package provides a simple page blueprint that allows 
         );
       },
       footerBuilder: (context, state) {
-        return ElevatedButton(
-          child: state.buttonChild,
-          onPressed: state.onTap,
+        return PueFooter(
+          child: ElevatedButton(
+            child: state.buttonChild,
+            onPressed: state.onTap,
+          ),
+          bottom: AnimatedSmoothIndicator(
+            activeStep: state.activeStep,
+            count: 3,
+          )
         );
       },
-      body: AutoRouter(),
+      body: DescendantPages(), // See below to see how to integrate your
+      // descendant pages with popular routing libraries like AutoRoute and VRouter
     );
   }
 ```
@@ -86,6 +93,7 @@ In addition to flows, this package provides a simple page blueprint that allows 
       footerData: FooterData(
         onTap: () => handleGoToNextPage(),
         buttonChild: Text('Submit'),
+        activeIndex: 1,
       ),
       body: MyPageBody(),
     );
@@ -93,6 +101,32 @@ In addition to flows, this package provides a simple page blueprint that allows 
 ```
 
 ## Outside of Flows
+
+If you would like to use the the layout capabilities of this library, first place a [PueProvider] at the top of your widget tree.
+
+```dart
+  PueProvider(child: DescendantWidgets())
+```
+
+Now, use [SoloPuePage] like so:
+
+```dart
+SoloPuePage(
+  appBar: AppBar(),
+  header: PueHeader(text: "I love me some poo"),
+  body: PueBody(
+    child: Text("More poo"),
+    listView: true,
+  ),
+  footer: PueFooter(
+    floating: true,
+    child: ElevatedButton(
+      child: Text("Generate poo!"),
+      onPressed: () => plopItOut(),
+    )
+  ),
+)
+```
 
 # Core concepts
 
