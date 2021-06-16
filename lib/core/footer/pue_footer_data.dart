@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'pue_footer.dart';
 
+/// This is the data class that holds the current footer information in a flow.
+/// It is provided via the `footerBuilder` parameter in the [Pueprint].
+/// Use [PuePage]s to update the footer data by passing in [FooterData] to
+/// the `footerData` argument
 class FooterData extends ChangeNotifier {
   /// Specifying this parameter will override the whole `footer`
   /// widget that is located in the [Pueprint].

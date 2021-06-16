@@ -10,6 +10,7 @@ _Why Pueprint? Because it stands for Page + Blueprint, which combines to 💩Pue
 
 - [Motivation](#motivation)
 - [Getting started](#getting-started)
+  - [Using this package](#using-this-package)
 - [Core concepts](#core-concepts)
   - [Widgets](#widgets)
 - [Integration with routing libraries](#integration-with-routing-libraries)
@@ -158,7 +159,7 @@ The `PuePage` widget is used in all of the descendant flow pages of a parent `Pu
 
 ### SoloPuePage
 
-For pages that are not a part of flows, but you still want to access the layout capabilities in this package. You can set all 4 core parts of a page in this widget.
+For pages that are not a part of flows, but you still want to access the layout capabilities in this package. You can set all 4 core areas of a page in this widget.
 
 # Integration with Routing Libraries
 
