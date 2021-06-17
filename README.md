@@ -143,7 +143,7 @@ SoloPuePage(
 
 This package revolves around the idea that a page can be divded into 4 distinct parts:
 
-<img src="./assets/core_concepts.png" />
+<img src="https://raw.githubusercontent.com/theweiweiway/pueprint/main/assets/core_concepts.png" />
 
 This package uses these 4 distinct elements to draw a page.
 
