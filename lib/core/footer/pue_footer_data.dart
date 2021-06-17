@@ -21,7 +21,7 @@ class FooterData extends ChangeNotifier {
   Widget? buttonChild;
 
   /// The active step of a page indicator
-  int? activeStep;
+  int activeStep;
 
   /// Total number of steps in a page indicator
   int? stepCount;
@@ -33,7 +33,7 @@ class FooterData extends ChangeNotifier {
     this.footerOverride,
     this.onTap,
     this.buttonChild,
-    this.activeStep,
+    this.activeStep = 1,
     this.stepCount,
     this.percent,
   });
