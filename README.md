@@ -2,7 +2,7 @@
 
 ### What am I?
 
-A Flutter package to make flows and pages much easier to lay out and style.
+A Flutter package to make flows and single pages much easier to lay out and style.
 
 _Why Pueprint? Because it stands for Page + Blueprint, which combines to 💩Pueprint💩!_
 

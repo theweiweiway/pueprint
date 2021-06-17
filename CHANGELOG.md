@@ -1,3 +1,7 @@
+## 0.0.3
+
+- Add longer description and remove dart.io for Web
+
 ## 0.0.2
 
 - Fix screenshot not showing up in readme
