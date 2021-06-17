@@ -44,6 +44,23 @@ class PueTheme extends ChangeNotifier {
     // maxWidth = state.maxWidth;
     headerTextStyle = state.headerTextStyle;
     headerSubtextStyle = state.headerSubtextStyle;
+    background = state.background;
     notifyListeners();
+  }
+
+  PueTheme copyWith({
+    required BuildContext context,
+    double? gutters,
+    TextStyle? headerTextStyle,
+    TextStyle? headerSubtextStyle,
+    Widget? background,
+  }) {
+    return PueTheme(
+      context: context,
+      gutters: gutters ?? this.gutters,
+      headerTextStyle: headerTextStyle ?? this.headerTextStyle,
+      headerSubtextStyle: headerSubtextStyle ?? this.headerSubtextStyle,
+      background: background ?? this.background,
+    );
   }
 }
