@@ -1,3 +1,7 @@
+## 0.0.4
+
+- [PueProvider] bug fixes
+
 ## 0.0.3
 
 - Add longer description and remove dart.io for Web
