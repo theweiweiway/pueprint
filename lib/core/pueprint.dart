@@ -86,6 +86,7 @@ class Pueprint extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PueProvider(
+      pueprint: true,
       builder: (context, appBarState, footerState) {
         return Stack(
           children: [

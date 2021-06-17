@@ -41,30 +41,34 @@ class PueProvider extends StatelessWidget {
     this.appBarData,
     this.footerData,
     this.pueprint = false,
-  }) : assert(!(child == null && builder == null) &&
-            (builder == null && pueprint == false));
+  }) : assert(!(child == null && builder == null));
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => theme ?? PueTheme(context: context),
-      child: ChangeNotifierProvider(
-        create: (_) => pueprint ? (appBarData ?? AppBarData()) : null,
-        child: ChangeNotifierProvider(
-          create: (_) => pueprint ? (footerData ?? FooterData()) : null,
-          child: pueprint
-              ? (builder != null
-                  ? Builder(
-                      builder: (context) {
-                        final appBarData = context.watch<AppBarData>();
-                        final footerData = context.watch<FooterData>();
-                        return builder!(context, appBarData, footerData);
-                      },
-                    )
-                  : child)
-              : child,
-        ),
-      ),
-    );
+    return pueprint
+        ? ChangeNotifierProvider(
+            create: (_) => theme ?? PueTheme(context: context),
+            child: ChangeNotifierProvider(
+              create: (_) => appBarData ?? AppBarData(),
+              child: ChangeNotifierProvider(
+                create: (_) => footerData ?? FooterData(),
+                child: pueprint
+                    ? (builder != null
+                        ? Builder(
+                            builder: (context) {
+                              final appBarData = context.watch<AppBarData>();
+                              final footerData = context.watch<FooterData>();
+                              return builder!(context, appBarData, footerData);
+                            },
+                          )
+                        : child)
+                    : child,
+              ),
+            ),
+          )
+        : ChangeNotifierProvider(
+            create: (_) => theme ?? PueTheme(context: context),
+            child: child,
+          );
   }
 }
