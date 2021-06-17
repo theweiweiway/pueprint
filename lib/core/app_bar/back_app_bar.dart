@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'package:universal_platform/universal_platform.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -100,7 +100,7 @@ class BackAppBar extends StatelessWidget implements PreferredSizeWidget {
         icon: icon != null
             ? Icon(icon)
             : (adaptiveBackButton
-                ? (Platform.isIOS || Platform.isMacOS)
+                ? (UniversalPlatform.isIOS || UniversalPlatform.isMacOS)
                     ? Icon(Icons.arrow_back_ios_new)
                     : Icon(Icons.arrow_back)
                 : Icon(Icons.arrow_back)),
