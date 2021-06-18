@@ -89,8 +89,8 @@ class Flow1Page extends StatelessWidget {
       header: PueHeader(
         text: 'flow 1 header',
       ),
-      body: Center(
-        child: Text('flow 1 page'),
+      body: PueBody(
+        child: Center(child: Text('flow 1 page')),
       ),
     );
   }

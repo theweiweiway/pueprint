@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../pue_theme.dart';
+import 'package:provider/provider.dart';
 
 /// This widget is intended to be used in the `body` parameter of the
 /// [PuePaqe] or [SoloPuePage] widgets. It provides some extra functionality as
@@ -39,7 +40,7 @@ class PueBody extends StatelessWidget {
     this.gutters,
   });
 
-  Widget _buildBody(context) {
+  Widget _buildBody(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: gutters ?? context.read<PueTheme>().gutters,

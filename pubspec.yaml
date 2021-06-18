@@ -1,6 +1,6 @@
 name: pueprint
 description: A Flutter package to make flows and single pages much easier to lay out and style 
-version: 0.0.5
+version: 0.0.7
 repository: https://github.com/theweiweiway/pueprint
 
 environment:

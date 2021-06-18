@@ -1,3 +1,7 @@
+## 0.0.7
+
+- Fixed [PueBody] BuildContext Provider bug
+
 ## 0.0.6
 
 - More [PueProvider] bug fixes. Remove `child` and add `pueBuilder`
