@@ -24,7 +24,7 @@ class FooterData extends ChangeNotifier {
   int activeStep;
 
   /// Total number of steps in a page indicator
-  int? stepCount;
+  int stepCount;
 
   /// Percent of a progress indicator
   double? percent;
@@ -34,7 +34,7 @@ class FooterData extends ChangeNotifier {
     this.onTap,
     this.buttonChild,
     this.activeStep = 1,
-    this.stepCount,
+    this.stepCount = 1,
     this.percent,
   });
 

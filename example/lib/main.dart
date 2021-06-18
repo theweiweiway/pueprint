@@ -59,7 +59,7 @@ class FlowWrapperPage extends StatelessWidget {
         ),
         footerBuilder: (context, state) => PueFooter(
           bottom: AnimatedSmoothIndicator(
-            activeIndex: state.activeStep != null ? state.activeStep! - 1 : 0,
+            activeIndex: state.activeStep - 1,
             count: 2,
             effect: WormEffect(),
           ),

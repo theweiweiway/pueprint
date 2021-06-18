@@ -1,6 +1,7 @@
 ## 0.0.5
 
 - More [PueProvider] bug fixes
+- Add example
 
 ## 0.0.4
 

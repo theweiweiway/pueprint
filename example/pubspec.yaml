@@ -24,7 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   vrouter: ^1.1.4+15
-  pueprint: ^0.0.4
+  pueprint: ^0.0.5
   smooth_page_indicator: ^0.3.0-nullsafety.0
 
 
