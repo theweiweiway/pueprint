@@ -46,7 +46,7 @@ class PuePage extends StatefulWidget {
     required this.body,
     this.footerData,
     this.background,
-  }); 
+  });
 
   @override
   _PuePageState createState() => _PuePageState();

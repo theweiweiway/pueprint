@@ -87,7 +87,8 @@ class Pueprint extends StatelessWidget {
   Widget build(BuildContext context) {
     return PueProvider(
       pueprint: true,
-      builder: (context, appBarState, footerState) {
+      theme: theme,
+      pueBuilder: (context, appBarState, footerState) {
         return Stack(
           children: [
             theme?.background ??

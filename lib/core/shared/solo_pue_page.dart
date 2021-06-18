@@ -57,36 +57,45 @@ class SoloPuePage extends StatelessWidget {
       theme: context
           .read<PueTheme>()
           .copyWith(context: context, gutters: gutters, background: background),
-      child: Stack(
-        children: [
-          background ??
-              PueBackground(
-                colour: Theme.of(context).scaffoldBackgroundColor,
-              ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              if (appBar != null)
-                SizedBox(height: appBar!.preferredSize.height),
-              if (header != null) header!,
-              Expanded(
-                child: body,
-              ),
+      builder: (context) {
+        return Stack(
+          children: [
+            background ??
+                PueBackground(
+                  colour: Theme.of(context).scaffoldBackgroundColor,
+                ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (appBar != null)
+                  SizedBox(height: appBar!.preferredSize.height),
+                if (header != null) header!,
+                Expanded(
+                  child: body,
+                ),
 
-              /// If the footer is not floating, render it directly in the `Column`
-              if (footer != null && !footer!.floating) footer!
-            ],
-          ),
-          if (footer != null && footer!.floating)
-            Positioned(
-              left: 0,
-              right: 0,
-              bottom: 0,
-              child: footer!,
+                /// If the footer is not floating, render it directly in the `Column`
+                if (footer != null && !footer!.floating) footer!
+              ],
             ),
-        ],
-      ),
+            if (appBar != null)
+              Positioned(
+                left: 0,
+                right: 0,
+                top: 0,
+                child: appBar!,
+              ),
+            if (footer != null && footer!.floating)
+              Positioned(
+                left: 0,
+                right: 0,
+                bottom: 0,
+                child: footer!,
+              ),
+          ],
+        );
+      },
     );
   }
 }

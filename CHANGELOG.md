@@ -1,3 +1,8 @@
+## 0.0.6
+
+- More [PueProvider] bug fixes. Remove `child` and add `pueBuilder`
+- Now you must always provide a builder in [PueProvider]
+
 ## 0.0.5
 
 - More [PueProvider] bug fixes

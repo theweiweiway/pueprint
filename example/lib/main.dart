@@ -5,20 +5,22 @@ import 'package:pueprint/pueprint.dart';
 
 void main() {
   runApp(
-    VRouter(
-      debugShowCheckedModeBanner: false,
-      routes: [
-        VWidget(path: '/', widget: HomePage()),
-        VNester(
-          path: null,
-          widgetBuilder: (child) => FlowWrapperPage(child: child),
-          nestedRoutes: [
-            VWidget(path: "/1", widget: Flow1Page()),
-            VWidget(path: '/2', widget: Flow2Page()),
-          ],
-        ),
-        VWidget(path: '/solo', widget: SoloPage()),
-      ],
+    PueProvider(
+      builder: (context) => VRouter(
+        debugShowCheckedModeBanner: false,
+        routes: [
+          VWidget(path: '/', widget: HomePage()),
+          VNester(
+            path: null,
+            widgetBuilder: (child) => FlowWrapperPage(child: child),
+            nestedRoutes: [
+              VWidget(path: "/1", widget: Flow1Page()),
+              VWidget(path: '/2', widget: Flow2Page()),
+            ],
+          ),
+          VWidget(path: '/solo', widget: SoloPage()),
+        ],
+      ),
     ),
   );
 }

@@ -10,8 +10,6 @@ import 'pue_theme.dart';
 /// [AppBarData] and [FooterData] to descendants. If not, then it only provides [PueTheme]
 /// to descendants (like [SoloPuePage]) to use
 class PueProvider extends StatelessWidget {
-  final Widget? child;
-
   /// The theme for descendants of this widget. See [PueTheme] for more details
   final PueTheme? theme;
 
@@ -30,13 +28,19 @@ class PueProvider extends StatelessWidget {
   /// be used in a [Pueprint] widget since it provides `appBarData` and `footerData`
   final Widget Function(
     BuildContext context,
-    AppBarData appBarData,
-    FooterData footerData,
   )? builder;
 
+  /// This builder should only be used in the [Pueprint] widget. It provides
+  /// both `appBarData` and `footerData` state for descendant [PuePage]s to use
+  final Widget Function(
+    BuildContext context,
+    AppBarData appBarData,
+    FooterData footerData,
+  )? pueBuilder;
+
   PueProvider({
-    this.child,
     this.builder,
+    this.pueBuilder,
     this.theme,
     this.appBarData,
     this.footerData,
@@ -52,23 +56,26 @@ class PueProvider extends StatelessWidget {
               create: (_) => appBarData ?? AppBarData(),
               child: ChangeNotifierProvider(
                 create: (_) => footerData ?? FooterData(),
-                child: pueprint
-                    ? (builder != null
-                        ? Builder(
-                            builder: (context) {
-                              final appBarData = context.watch<AppBarData>();
-                              final footerData = context.watch<FooterData>();
-                              return builder!(context, appBarData, footerData);
-                            },
-                          )
-                        : child)
-                    : child,
+                child: Builder(
+                  builder: (context) {
+                    if (pueprint) {
+                      final appBarData = context.watch<AppBarData>();
+                      final footerData = context.watch<FooterData>();
+                      return pueBuilder!(context, appBarData, footerData);
+                    }
+                    return builder!(context);
+                  },
+                ),
               ),
             ),
           )
         : ChangeNotifierProvider(
             create: (_) => theme ?? PueTheme(context: context),
-            child: child,
+            child: Builder(
+              builder: (context) {
+                return builder!(context);
+              },
+            ),
           );
   }
 }
