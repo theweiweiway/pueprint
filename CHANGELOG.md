@@ -1,3 +1,7 @@
+## 0.0.5
+
+- More [PueProvider] bug fixes
+
 ## 0.0.4
 
 - [PueProvider] bug fixes

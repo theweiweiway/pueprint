@@ -41,7 +41,7 @@ class PueProvider extends StatelessWidget {
     this.appBarData,
     this.footerData,
     this.pueprint = false,
-  }) : assert(!(child == null && builder == null));
+  });
 
   @override
   Widget build(BuildContext context) {

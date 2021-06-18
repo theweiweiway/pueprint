@@ -44,7 +44,7 @@ class PueHeader extends StatelessWidget {
     this.textSpacing = PueConstants.defaultTextSpacing,
     this.padding = const EdgeInsets.all(0),
     this.centerTitle = false,
-  }) : assert((text != null && title != null));
+  }); 
 
   Widget build(BuildContext context) {
     return Container(
